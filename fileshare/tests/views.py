@@ -29,3 +29,15 @@ class UserFileListViewTestCase(TestCase):
         response = self.client.get('/files/')
         self.assertIn(file_one, response.context['object_list'])
         self.assertIn(file_two, response.context['object_list'])
+
+class UserFileDownloadViewTestCase(TestCase):
+    def setUp(self):
+        User = get_user_model()
+        self.user_alice = User.objects.create(username='alice')
+        self.user_bob = User.objects.create(username='bob')
+
+    def testCanDownloadFile(self):
+        alice_file = models.UserFile.objects.create(user=self.user_alice, public=True)
+        self.client.force_login(self.user_bob)
+        response = self.client.get('/files/{}/download/'.format(alice_file.pk))
+        # TODO: Continue this test

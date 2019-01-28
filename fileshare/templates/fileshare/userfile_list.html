@@ -22,7 +22,7 @@
                     <td>{{ userfile.filename }}</td>
                     <td>{{ userfile.created }}</td>
                     <td>{{ userfile.public|yesno }}</td>
-                    <td><a href="">Download</a></td>
+                    <td><a href="{% url "userfile-download" pk=userfile.pk %}">Download</a></td>
                 </tr>
             {% endfor %}
         </table>

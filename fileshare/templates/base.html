@@ -10,8 +10,17 @@
         {% block header %}
             <div class="site-name">FileShare</div>
             <nav>
-                {% block nav %}
-                {% endblock %}
+                <ul>
+                    {% block nav %}
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url "logout" %}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url "login" %}">Login</a></li>
+                            <li><a href="{% url "django_registration_register" %}">Register</a></li>
+
+                        {% endif %}
+                    {% endblock %}
+                </ul>
             </nav>
         {% endblock %}
     </header>

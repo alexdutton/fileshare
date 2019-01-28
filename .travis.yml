@@ -6,7 +6,7 @@ install:
   - pipenv install --dev
 env:
   global:
-    - DJANGO_SETTINGS_MODULE=fileshare.tests.settings
+    - DJANGO_SETTINGS_MODULE=fileshare.settings
 script: PYTHONPATH=. coverage run --source=. `which django-admin.py` test
 after_success:
   - codecov

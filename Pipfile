@@ -8,6 +8,7 @@ codecov = "*"
 
 [packages]
 django = "*"
+django-registration = "*"
 
 [requires]
 python_version = "3.7"

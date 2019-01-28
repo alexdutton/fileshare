@@ -13,6 +13,8 @@
                 <ul>
                     {% block nav %}
                         {% if user.is_authenticated %}
+                            <li><a href="{% url "userfile-list" %}">View files</a></li>
+                            <li><a href="{% url "userfile-create" %}">Upload new file</a></li>
                             <li><a href="{% url "logout" %}">Logout</a></li>
                         {% else %}
                             <li><a href="{% url "login" %}">Login</a></li>

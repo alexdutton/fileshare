@@ -1,0 +1,22 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Upload file{% endblock %}
+
+{% block content %}
+    <h1>Upload file</h1>
+
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <table>
+            <tbody>
+            {{ form.as_table }}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Upload">
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </form>
+{% endblock %}

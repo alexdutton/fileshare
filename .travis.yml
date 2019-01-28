@@ -1,0 +1,12 @@
+dist: xenial
+language: python
+python:
+  - "3.6"
+install:
+  - pipenv install --dev
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE=fileshare.tests.settings
+script: PYTHONPATH=. coverage run --source=. `which django-admin.py` test
+after_success:
+  - codecov

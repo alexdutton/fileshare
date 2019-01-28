@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from . import views
+
 urlpatterns = [
+    path('files/create/', views.UserFileCreateView.as_view(), name='userfile-create'),
+
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),

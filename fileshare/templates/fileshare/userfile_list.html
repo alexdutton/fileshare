@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}List files{% endblock %}
+
+{% block content %}
+    <h1>List files</h1>
+
+    {% if userfile_list %}
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Filename</th>
+                <th scope="col">Created</th>
+                <th scope="col">Download</th>
+            </tr>
+            </thead>
+            {% for userfile in userfile_list %}
+                <tr>
+                    <td>{{ userfile.filename }}</td>
+                    <td>{{ userfile.created }}</td>
+                    <td><a href="{{ userfile.file.url }}">Download</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No files have been uploaded yet.</p>
+    {% endif %}
+
+    <p><a href="{% url "userfile-create" %}">Upload new file</a></p>
+{% endblock %}

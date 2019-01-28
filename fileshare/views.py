@@ -1,9 +1,17 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView
+from django.views.generic import ListView, CreateView
 
 from . import models
+
+
+@method_decorator(login_required, name='dispatch')
+class UserFileListView(ListView):
+    model = models.UserFile
+
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)
 
 
 @method_decorator(login_required, name='dispatch')

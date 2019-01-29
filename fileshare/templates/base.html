@@ -19,8 +19,8 @@
                         {% else %}
                             <li><a href="{% url "login" %}">Login</a></li>
                             <li><a href="{% url "django_registration_register" %}">Register</a></li>
-
                         {% endif %}
+                            <li><a href="{% url "api:api-root" %}">API</a></li>
                     {% endblock %}
                 </ul>
             </nav>

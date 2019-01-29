@@ -22,6 +22,7 @@ from . import api, views
 urlpatterns = [
     path('files/', views.UserFileListView.as_view(), name='userfile-list'),
     path('files/create/', views.UserFileCreateView.as_view(), name='userfile-create'),
+    path('files/<pk>/download', views.UserFileDownloadView.as_view(), name='userfile-download'),
 
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('accounts/', include('django_registration.backends.one_step.urls')),
